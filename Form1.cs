@@ -56,6 +56,7 @@ namespace Diseño_Programador
         const int LABELSALIRSIS = 14;
         const int FPANELGUIA = 15;
         const int LABELDETECTAR2 = 16;
+        const int LABELCONF2 = 17;
 
         //Dimesiones de PANTALLA PRINCIPA
         int ANCHOPANELBARRA = 0;
@@ -110,6 +111,7 @@ namespace Diseño_Programador
         int POSXLABELSALIRSIS = 14;
         int POSXFPANELGUIA = 15;
         int POSXLABELDETECTAR2 = 8;
+        int POSXLABELCONF2 = 10;
 
         int POSYPANELBARRA = 0;
         int POSYPANELMIN = 1;
@@ -128,6 +130,7 @@ namespace Diseño_Programador
         int POSYLABELSALIRSIS = 14;
         int POSYFPANELGUIA = 15;
         int POSYLABELDETECTAR2 = 16;
+        int POSYLABELCONF2 = 10;
 
         //Varibles para la animacion
         bool AnimPanelDetectar1 = false;
@@ -135,10 +138,10 @@ namespace Diseño_Programador
         bool AnimPanelDetectar3 = false;
         bool AnimPanelDetectar4 = false;
         bool IniciarAnimDetectar = false;
-        int ContadorCambioColorDetectar = 0;
-        int ContadorCambioTamañoDetectar = 0;
-        int ContadorAparicionTextoDetectar = 0;
-        int ContadorMovimientoTextoDetectar = 0;
+        int[] ContadorCambioColor = new int[13];
+        int[] ContadorCambioTamaño = new int[13];
+        int[] ContadorAparicionTexto = new int[13];
+        int[] ContadorMovimientoTexto = new int[13];
 
         int ContadorSalida = 0;
 
@@ -192,6 +195,7 @@ namespace Diseño_Programador
             this.LabelSalirSis.Visible = false;
             this.FPanelGuia2.Visible = false;
             this.LabelDectectar2.Visible = false;
+            this.LabelConf2.Visible = false;
         }
 
         public void ActualizarDimesiones()
@@ -223,7 +227,7 @@ namespace Diseño_Programador
             //LARGOLABELTITULO2 = 6;
             LARGOPANELDETECTAR = 15*this.Height/100;//29
             //LARGOLABELDETECTAR = 8;
-            LARGOPANELCONF = 29*this.Height/100;
+            LARGOPANELCONF = 15*this.Height/100;
             //LARGOLABELCONF = 10;
             LARGOPANELLECT = 18*this.Height/100;
             //LARGOLABELLECT = 12;
@@ -252,6 +256,7 @@ namespace Diseño_Programador
             POSXLABELSALIRSIS = 35*ANCHOPANELSALIRSIS/100;
             POSXFPANELGUIA = 55*this.Width/100;
             POSXLABELDETECTAR2 = 5 * ANCHOPANELDETECTAR / 100;
+            POSXLABELCONF2 = 5 * ANCHOPANELCONF / 100;
 
             POSYPANELBARRA = 0;
             POSYPANELMIN = 0;
@@ -270,6 +275,7 @@ namespace Diseño_Programador
             POSYLABELSALIRSIS = 30*LARGOPANELSALIRSIS/100;
             POSYFPANELGUIA = POSYPANELDETECTAR;
             POSYLABELDETECTAR2 = 100 * LARGOPANELDETECTAR / 100;
+            POSYLABELCONF2 = 100 * LARGOPANELDETECTAR / 100;
         }
 
         public void ActualizarPantalla()
@@ -306,7 +312,8 @@ namespace Diseño_Programador
 
             //Diseño de Configuracion
             CrearPanel(PANELCONF,255, 80, 80, 80,ANCHOPANELCONF,LARGOPANELCONF,POSXPANELCONF,POSYPANELCONF);
-            CrearLabel(PANELCONF,LABELCONF,"Configu-\nracion de\nPlaca",255,255,255,255,POSXLABELCONF,POSYLABELCONF,24);
+            CrearLabel(PANELCONF,LABELCONF,"Configu-\nracion",255,255,255,255,POSXLABELCONF,POSYLABELCONF,24);
+            CrearLabel(PANELCONF, LABELCONF2, "Configu-\nracion", 0, 255, 255, 255, POSXLABELCONF2, POSYLABELCONF2, 12);
 
             //Diseño de Lectura de datos
             CrearPanel(PANELLECT, 255, 80, 80, 80, ANCHOPANELLECT, LARGOPANELLECT, POSXPANELLECT, POSYPANELLECT);
@@ -465,6 +472,9 @@ namespace Diseño_Programador
             {
                 case LABELCONF:
                     l = this.LabelConf;
+                    break;
+                case LABELCONF2:
+                    l = this.LabelConf2;
                     break;
                 case LABELDETECTAR:
                     l = this.LabelDetectar;
@@ -735,10 +745,68 @@ namespace Diseño_Programador
             int MouseXPos = Control.MousePosition.X;
 
             // Variables para Recuadro Detectar Placa
-            int DectX1 = this.Left + POSXPANELDETECTAR + 1 * this.Height / 100;
-            int DectX2 = DectX1 + this.PanelDetectar.Width;
-            int DectY1 = this.Top + POSYPANELDETECTAR + 5*this.Height/100;
-            int DectY2 = DectY1 + this.PanelDetectar.Height;
+            int[] DectX1 = new int[13];
+            int[] DectX2 = new int[13];
+            int[] DectY1 = new int[13];
+            int[] DectY2 = new int[13];
+            //TextoOpciones[0] = "\\Imagenes\\OpcionMin.png";
+            int[] PosXVAL = new int[13];
+            int[] PosYVAL = new int[13];
+            //
+            int[] P1 = new int[13];
+            P1[0] = PANELDETECTAR;
+            P1[1] = PANELCONF;
+            //*********************
+            PosXVAL[0] = POSXPANELDETECTAR;
+            PosXVAL[1] = POSXPANELCONF;
+            //***********************
+            PosYVAL[0] = POSYPANELDETECTAR;
+            PosYVAL[1] = POSYPANELCONF;
+            //**********************
+
+
+            for (int i = 0; i <= 1;i++)
+            {
+
+                var P = this.PanelBarra;
+                switch (P1[i])
+                {
+                    case PANELBARRA:
+                        P = this.PanelBarra;
+                        break;
+                    case PANELCONF:
+                        P = this.PanelConf;
+                        break;
+                    case PANELDETECTAR:
+                        P = this.PanelDetectar;
+                        break;
+                    case PANELLECT:
+                        P = this.PanelLect;
+                        break;
+                    case PANELMAX:
+                        P = this.PanelMax;
+                        break;
+                    case PANELMIN:
+                        P = this.PanelMin;
+                        break;
+                    case PANELSALIR:
+                        P = this.PanelSalir;
+                        break;
+                    case PANELSALIRSIS:
+                        P = this.PanelSalirSis;
+                        break;
+                    case PANELTITULO:
+                        P = this.PanelTitulo;
+                        break;
+                    default:
+                        return;
+                }
+
+                DectX1[i] = this.Left + PosXVAL[i] + 1 * this.Height / 100;
+                DectX2[i] = DectX1[i] + P.Width;
+                DectY1[i] = this.Top + PosYVAL[i] + 5 * this.Height / 100;
+                DectY2[i] = DectY1[i] + P.Height;
+            }
 
             ContadorSalida++;
             if (ContadorSalida % 100 == 0)
@@ -746,34 +814,37 @@ namespace Diseño_Programador
                 Console.WriteLine("X: " + MouseXPos + " Y: " + MouseYPos + " X1: " + DectX1 + " X2: " + DectX2 + " Y1: " + DectY1 + " Y2: " + DectY2);
             }
 
-            if (MouseXPos >= DectX1 && MouseXPos <= DectX2 && MouseYPos >= DectY1 && MouseYPos <= DectY2 )
+            for (int i = 0; i <= 1; i++)
             {
-                if (ContadorCambioColorDetectar < 100)
+                if (MouseXPos >= DectX1[i] && MouseXPos <= DectX2[i] && MouseYPos >= DectY1[i] && MouseYPos <= DectY2[i])
                 {
-                    AnimacionCambioColor(1);
+                    if (ContadorCambioColor[i] < 100)
+                    {
+                        AnimacionCambioColor(1,i);
+                    }
+                    if (ContadorCambioTamaño[i] < 50)
+                    {
+                        AnimacionCambioDimesionRecuadro(1,i);
+                    }
+                    if (ContadorAparicionTexto[i] < 255 && ContadorCambioTamaño[i] >= 25)
+                    {
+                        AnimacionAparicionTexto(1,i);
+                    }
                 }
-                if (ContadorCambioTamañoDetectar < 50 )
+                else
                 {
-                    AnimacionCambioDimesionRecuadro(1);
-                }
-                if (ContadorAparicionTextoDetectar < 255 && ContadorCambioTamañoDetectar >= 25)
-                {
-                    AnimacionAparicionTexto(1);
-                }
-            }
-            else
-            {
-                if (ContadorCambioColorDetectar > 0 && ContadorCambioTamañoDetectar < 10)
-                {
-                    AnimacionCambioColor(0);
-                }
-                if (ContadorCambioTamañoDetectar > 0 && ContadorAparicionTextoDetectar < 50)
-                {
-                    AnimacionCambioDimesionRecuadro(0);
-                }
-                if (ContadorAparicionTextoDetectar > 0 )
-                {
-                    AnimacionAparicionTexto(0);
+                    if (ContadorCambioColor[i] > 0 && ContadorCambioTamaño[i] < 10)
+                    {
+                        AnimacionCambioColor(0,i);
+                    }
+                    if (ContadorCambioTamaño[i] > 0 && ContadorAparicionTexto[i] < 50)
+                    {
+                        AnimacionCambioDimesionRecuadro(0,i);
+                    }
+                    if (ContadorAparicionTexto[i] > 0)
+                    {
+                        AnimacionAparicionTexto(0,i);
+                    }
                 }
             }
             /*bool RecuadroDetectar = (Control.MousePosition.X >= (this.Left + 2 * this.PanelDetectar.Location.X) && Control.MousePosition.X <= (this.PanelDetectar.Width + this.Left + this.PanelDetectar.Location.X) && Control.MousePosition.Y >= (15 * this.PanelDetectar.Location.Y / 10 + this.Top) && Control.MousePosition.Y <= (8 * this.PanelDetectar.Location.Y / 5 + this.PanelDetectar.Height + this.Top));
@@ -817,64 +888,211 @@ namespace Diseño_Programador
 
         }
 
-        public void AnimacionAparicionTexto(int a)
+        public void AnimacionAparicionTexto(int a, int i)
         {
-            if (a == 1 && ContadorAparicionTextoDetectar < 255)
+            if (a == 1 && ContadorAparicionTexto[i] < 255)
             {
-                ContadorAparicionTextoDetectar = ContadorAparicionTextoDetectar + 20;
+                ContadorAparicionTexto[i] = ContadorAparicionTexto[i] + 20;
             }
-            else if (a == 0 && ContadorAparicionTextoDetectar > 0)
+            else if (a == 0 && ContadorAparicionTexto[i] > 0)
             {
-                ContadorAparicionTextoDetectar = ContadorAparicionTextoDetectar - 20;
+                ContadorAparicionTexto[i] = ContadorAparicionTexto[i] - 20;
             }
-            if (ContadorAparicionTextoDetectar > 255)
+            if (ContadorAparicionTexto[i] > 255)
             {
-                ContadorAparicionTextoDetectar = 255;
+                ContadorAparicionTexto[i] = 255;
             }
-            else if (ContadorAparicionTextoDetectar < 0)
+            else if (ContadorAparicionTexto[i] < 0)
             {
-                ContadorAparicionTextoDetectar = 0;
+                ContadorAparicionTexto[i] = 0;
             }
-            this.LabelDectectar2.ForeColor = Color.FromArgb(ContadorAparicionTextoDetectar, 255, 255, 255);
+
+            //this.LabelDectectar2.ForeColor = Color.FromArgb(ContadorAparicionTexto[i], 255, 255, 255);
         }
 
-        public void AnimacionCambioDimesionRecuadro(int a)
+        public void AnimacionCambioDimesionRecuadro(int a, int i)
         {
             int dat = 0;
-            dat = (int)((11*this.Height/100)*(1-Math.Exp(-ContadorCambioTamañoDetectar * 0.1 / 2)));
+            dat = (int)((11*this.Height/100)*(1-Math.Exp(-ContadorCambioTamaño[i] * 0.1 / 2)));
             if (ContadorSalida % 100 == 0)
             {
                 Console.WriteLine("Contador: " + dat.ToString());
             }
-            if (a == 1 && dat < 11 * this.Height / 100 && ContadorCambioTamañoDetectar < 50)
+            if (a == 1 && dat < 11 * this.Height / 100 && ContadorCambioTamaño[i] < 50)
             {
-                ContadorCambioTamañoDetectar++;
+                ContadorCambioTamaño[i]++;
             }
             else if (a == 0 && dat > 0)
             {
-                ContadorCambioTamañoDetectar--;
+                ContadorCambioTamaño[i]--;
             }
-            if (ContadorCambioTamañoDetectar < 0)
+            if (ContadorCambioTamaño[i] < 0)
             {
-                ContadorCambioTamañoDetectar = 0;
+                ContadorCambioTamaño[i] = 0;
             }
             //LARGOPANELDETECTAR = LARGOPANELDETECTAR + dat;
-            this.PanelDetectar.Height = LARGOPANELDETECTAR + dat;
+            //
+            int[] P1 = new int[13];
+            P1[0] = PANELDETECTAR;
+            P1[1] = PANELCONF;
+            int[] P2 = new int[13];
+            P2[0] = LARGOPANELDETECTAR;
+            P2[1] = LARGOPANELCONF;
+            var P = this.PanelBarra;
+            switch (P1[i])
+            {
+                case PANELBARRA:
+                    P = this.PanelBarra;
+                    break;
+                case PANELCONF:
+                    P = this.PanelConf;
+                    break;
+                case PANELDETECTAR:
+                    P = this.PanelDetectar;
+                    break;
+                case PANELLECT:
+                    P = this.PanelLect;
+                    break;
+                case PANELMAX:
+                    P = this.PanelMax;
+                    break;
+                case PANELMIN:
+                    P = this.PanelMin;
+                    break;
+                case PANELSALIR:
+                    P = this.PanelSalir;
+                    break;
+                case PANELSALIRSIS:
+                    P = this.PanelSalirSis;
+                    break;
+                case PANELTITULO:
+                    P = this.PanelTitulo;
+                    break;
+                default:
+                    return;
+            }
+            P.Height = P2[i] + dat;
         }
 
-        public void AnimacionCambioColor(int a)
+        public void AnimacionCambioColor(int a, int i)
         {
-            if (a == 1 && ContadorCambioColorDetectar<120)
+            if (a == 1 && ContadorCambioColor[i] < 120)
             {
-                ContadorCambioColorDetectar = ContadorCambioColorDetectar + 10;
+                ContadorCambioColor[i] = ContadorCambioColor[i] + 10;
             }
-            else if (a == 0 && ContadorCambioColorDetectar > 0)
+            else if (a == 0 && ContadorCambioColor[i] > 0)
             {
-                ContadorCambioColorDetectar = ContadorCambioColorDetectar - 10;  
+                ContadorCambioColor[i] = ContadorCambioColor[i] - 10;  
             }
-            this.PanelDetectar.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
-            this.LabelDetectar.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
-            this.LabelDectectar2.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
+
+
+            int[] P1 = new int[13];
+            P1[0] = PANELDETECTAR;
+            P1[1] = PANELCONF;
+            int[] L1 = new int[13];
+            L1[0] = LABELDETECTAR;
+            L1[1] = LABELCONF;
+            int[] L2 = new int[13];
+            L2[0] = LABELDETECTAR2;
+            L2[1] = LABELCONF2;
+
+            var P = this.PanelBarra;
+            switch (P1[i])
+            {
+                case PANELBARRA:
+                    P = this.PanelBarra;
+                    break;
+                case PANELCONF:
+                    P = this.PanelConf;
+                    break;
+                case PANELDETECTAR:
+                    P = this.PanelDetectar;
+                    break;
+                case PANELLECT:
+                    P = this.PanelLect;
+                    break;
+                case PANELMAX:
+                    P = this.PanelMax;
+                    break;
+                case PANELMIN:
+                    P = this.PanelMin;
+                    break;
+                case PANELSALIR:
+                    P = this.PanelSalir;
+                    break;
+                case PANELSALIRSIS:
+                    P = this.PanelSalirSis;
+                    break;
+                case PANELTITULO:
+                    P = this.PanelTitulo;
+                    break;
+                default:
+                    return;
+            }
+            var l = this.LabelTitulo1;
+            switch (L1[i])
+            {
+                case LABELCONF:
+                    l = this.LabelConf;
+                    break;
+                case LABELCONF2:
+                    l = this.LabelConf2;
+                    break;
+                case LABELDETECTAR:
+                    l = this.LabelDetectar;
+                    break;
+                case LABELDETECTAR2:
+                    l = this.LabelDectectar2;
+                    break;
+                case LABELLECT:
+                    l = this.LabelLect;
+                    break;
+                case LABELSALIRSIS:
+                    l = this.LabelSalirSis;
+                    break;
+                case LABELTITULO1:
+                    l = this.LabelTitulo1;
+                    break;
+                case LABELTITULO2:
+                    l = this.LabelTitulo2;
+                    break;
+                default:
+                    return;
+            }
+            var l2 = this.LabelTitulo1;
+            switch (L2[i])
+            {
+                case LABELCONF:
+                    l2 = this.LabelConf;
+                    break;
+                case LABELCONF2:
+                    l2 = this.LabelConf2;
+                    break;
+                case LABELDETECTAR:
+                    l2 = this.LabelDetectar;
+                    break;
+                case LABELDETECTAR2:
+                    l2 = this.LabelDectectar2;
+                    break;
+                case LABELLECT:
+                    l2 = this.LabelLect;
+                    break;
+                case LABELSALIRSIS:
+                    l2 = this.LabelSalirSis;
+                    break;
+                case LABELTITULO1:
+                    l2 = this.LabelTitulo1;
+                    break;
+                case LABELTITULO2:
+                    l2 = this.LabelTitulo2;
+                    break;
+                default:
+                    return;
+            }
+
+            P.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
+            l.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
+            l2.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
         }
 
         public void TraslacionRegresarPantalla1()

@@ -50,6 +50,7 @@
             this.PanelSalirSis = new System.Windows.Forms.Panel();
             this.FPanelGuia2 = new System.Windows.Forms.FlowLayoutPanel();
             this.LabelDectectar2 = new System.Windows.Forms.Label();
+            this.LabelConf2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PanelBarra
@@ -191,7 +192,7 @@
             // LabelConf
             // 
             this.LabelConf.AutoSize = true;
-            this.LabelConf.Location = new System.Drawing.Point(452, 47);
+            this.LabelConf.Location = new System.Drawing.Point(454, 38);
             this.LabelConf.Name = "LabelConf";
             this.LabelConf.Size = new System.Drawing.Size(35, 13);
             this.LabelConf.TabIndex = 13;
@@ -247,11 +248,21 @@
             this.LabelDectectar2.TabIndex = 19;
             this.LabelDectectar2.Text = "label1";
             // 
+            // LabelConf2
+            // 
+            this.LabelConf2.AutoSize = true;
+            this.LabelConf2.Location = new System.Drawing.Point(454, 51);
+            this.LabelConf2.Name = "LabelConf2";
+            this.LabelConf2.Size = new System.Drawing.Size(35, 13);
+            this.LabelConf2.TabIndex = 20;
+            this.LabelConf2.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 261);
+            this.Controls.Add(this.LabelConf2);
             this.Controls.Add(this.LabelDectectar2);
             this.Controls.Add(this.FPanelGuia2);
             this.Controls.Add(this.LabelSalirSis);
@@ -304,5 +315,6 @@
         private System.Windows.Forms.Panel PanelSalirSis;
         private System.Windows.Forms.FlowLayoutPanel FPanelGuia2;
         private System.Windows.Forms.Label LabelDectectar2;
+        private System.Windows.Forms.Label LabelConf2;
     }
 }

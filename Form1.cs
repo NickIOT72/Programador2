@@ -1,4 +1,4 @@
-﻿using System;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel;
 using System.Data;
@@ -55,6 +55,7 @@ namespace Diseño_Programador
         const int PANELSALIRSIS = 13;
         const int LABELSALIRSIS = 14;
         const int FPANELGUIA = 15;
+        const int LABELDETECTAR2 = 16;
 
         //Dimesiones de PANTALLA PRINCIPA
         int ANCHOPANELBARRA = 0;
@@ -108,6 +109,7 @@ namespace Diseño_Programador
         int POSXPANELSALIRSIS = 13;
         int POSXLABELSALIRSIS = 14;
         int POSXFPANELGUIA = 15;
+        int POSXLABELDETECTAR2 = 8;
 
         int POSYPANELBARRA = 0;
         int POSYPANELMIN = 1;
@@ -125,9 +127,20 @@ namespace Diseño_Programador
         int POSYPANELSALIRSIS = 13;
         int POSYLABELSALIRSIS = 14;
         int POSYFPANELGUIA = 15;
+        int POSYLABELDETECTAR2 = 16;
 
         //Varibles para la animacion
-        bool[] AnimPanelDetectar = new bool[4];
+        bool AnimPanelDetectar1 = false;
+        bool AnimPanelDetectar2 = false;
+        bool AnimPanelDetectar3 = false;
+        bool AnimPanelDetectar4 = false;
+        bool IniciarAnimDetectar = false;
+        int ContadorCambioColorDetectar = 0;
+        int ContadorCambioTamañoDetectar = 0;
+        int ContadorAparicionTextoDetectar = 0;
+        int ContadorMovimientoTextoDetectar = 0;
+
+        int ContadorSalida = 0;
 
         //Creacion de Paneles
         //private System.Windows.Forms.Panel PanelTitulo;
@@ -178,6 +191,7 @@ namespace Diseño_Programador
             this.PanelSalirSis.Visible = false;
             this.LabelSalirSis.Visible = false;
             this.FPanelGuia2.Visible = false;
+            this.LabelDectectar2.Visible = false;
         }
 
         public void ActualizarDimesiones()
@@ -236,7 +250,8 @@ namespace Diseño_Programador
             POSXLABELLECT = 15*ANCHOPANELLECT/100;
             POSXPANELSALIRSIS = 5*this.Width/100;
             POSXLABELSALIRSIS = 35*ANCHOPANELSALIRSIS/100;
-            POSXFPANELGUIA = 55*this.Width/100;;
+            POSXFPANELGUIA = 55*this.Width/100;
+            POSXLABELDETECTAR2 = 5 * ANCHOPANELDETECTAR / 100;
 
             POSYPANELBARRA = 0;
             POSYPANELMIN = 0;
@@ -254,6 +269,7 @@ namespace Diseño_Programador
             POSYPANELSALIRSIS = 71*this.Height/100;
             POSYLABELSALIRSIS = 30*LARGOPANELSALIRSIS/100;
             POSYFPANELGUIA = POSYPANELDETECTAR;
+            POSYLABELDETECTAR2 = 100 * LARGOPANELDETECTAR / 100;
         }
 
         public void ActualizarPantalla()
@@ -286,6 +302,7 @@ namespace Diseño_Programador
             //Diseño de Detectar Placa
             CrearPanel(PANELDETECTAR,255, 0, 96, 110,ANCHOPANELDETECTAR,LARGOPANELDETECTAR,POSXPANELDETECTAR,POSYPANELDETECTAR);
             CrearLabel(PANELDETECTAR,LABELDETECTAR,"Detectar\nPlaca",255,255,255,255,POSXLABELDETECTAR,POSYLABELDETECTAR,24);
+            CrearLabel(PANELDETECTAR, LABELDETECTAR2, "Conecte La placa\nAl sistema", 0, 255, 255, 255, POSXLABELDETECTAR2, POSYLABELDETECTAR2, 12);
 
             //Diseño de Configuracion
             CrearPanel(PANELCONF,255, 80, 80, 80,ANCHOPANELCONF,LARGOPANELCONF,POSXPANELCONF,POSYPANELCONF);
@@ -451,6 +468,9 @@ namespace Diseño_Programador
                     break;
                 case LABELDETECTAR:
                     l = this.LabelDetectar;
+                    break;
+                case LABELDETECTAR2:
+                    l = this.LabelDectectar2;
                     break;
                 case LABELLECT:
                     l = this.LabelLect;
@@ -682,7 +702,7 @@ namespace Diseño_Programador
 
         private void PanelDetectar_MouseHover(object sender, EventArgs e)
         {
-            AutorizarAnimacionDetectar = true;
+            //AutorizarAnimacionDetectar = true;
         }
 
         public void AnimacionPanelDetectar()
@@ -694,26 +714,68 @@ namespace Diseño_Programador
 
         private void PanelDetectar_MouseLeave(object sender, EventArgs e)
         {
-            AutorizarAnimacionDetectar = false;          
+            //AutorizarAnimacionDetectar = false;          
         }
 
         private void Lbl_MouseHover(object sender, EventArgs e)
         {
             //AnimacionPanelDetectar();
-            AutorizarAnimacionDetectar = true;
+            //AutorizarAnimacionDetectar = true;
         }
 
         private void Lbl_MouseLeave(object sender, EventArgs e)
         {
-            AutorizarAnimacionDetectar = true;
+            //AutorizarAnimacionDetectar = true;
         }
 
         private void timer1_Tick(object sender, EventArgs e)
         {
-
+            // Variables para posicion del Mouse
             int MouseYPos = Control.MousePosition.Y;
             int MouseXPos = Control.MousePosition.X;
 
+            // Variables para Recuadro Detectar Placa
+            int DectX1 = this.Left + POSXPANELDETECTAR + 1 * this.Height / 100;
+            int DectX2 = DectX1 + this.PanelDetectar.Width;
+            int DectY1 = this.Top + POSYPANELDETECTAR + 5*this.Height/100;
+            int DectY2 = DectY1 + this.PanelDetectar.Height;
+
+            ContadorSalida++;
+            if (ContadorSalida % 100 == 0)
+            {
+                Console.WriteLine("X: " + MouseXPos + " Y: " + MouseYPos + " X1: " + DectX1 + " X2: " + DectX2 + " Y1: " + DectY1 + " Y2: " + DectY2);
+            }
+
+            if (MouseXPos >= DectX1 && MouseXPos <= DectX2 && MouseYPos >= DectY1 && MouseYPos <= DectY2 )
+            {
+                if (ContadorCambioColorDetectar < 100)
+                {
+                    AnimacionCambioColor(1);
+                }
+                if (ContadorCambioTamañoDetectar < 50 )
+                {
+                    AnimacionCambioDimesionRecuadro(1);
+                }
+                if (ContadorAparicionTextoDetectar < 255 && ContadorCambioTamañoDetectar >= 25)
+                {
+                    AnimacionAparicionTexto(1);
+                }
+            }
+            else
+            {
+                if (ContadorCambioColorDetectar > 0 && ContadorCambioTamañoDetectar < 10)
+                {
+                    AnimacionCambioColor(0);
+                }
+                if (ContadorCambioTamañoDetectar > 0 && ContadorAparicionTextoDetectar < 50)
+                {
+                    AnimacionCambioDimesionRecuadro(0);
+                }
+                if (ContadorAparicionTextoDetectar > 0 )
+                {
+                    AnimacionAparicionTexto(0);
+                }
+            }
             /*bool RecuadroDetectar = (Control.MousePosition.X >= (this.Left + 2 * this.PanelDetectar.Location.X) && Control.MousePosition.X <= (this.PanelDetectar.Width + this.Left + this.PanelDetectar.Location.X) && Control.MousePosition.Y >= (15 * this.PanelDetectar.Location.Y / 10 + this.Top) && Control.MousePosition.Y <= (8 * this.PanelDetectar.Location.Y / 5 + this.PanelDetectar.Height + this.Top));
             if ( !AutorizarTraslacionInversaDetectar && !AutorizarTraslacionDetectar && (AutorizarAnimacionDetectar || RecuadroDetectar) )
             {
@@ -753,6 +815,66 @@ namespace Diseño_Programador
                 TraslacionRegresarPantalla1();
             }*/
 
+        }
+
+        public void AnimacionAparicionTexto(int a)
+        {
+            if (a == 1 && ContadorAparicionTextoDetectar < 255)
+            {
+                ContadorAparicionTextoDetectar = ContadorAparicionTextoDetectar + 20;
+            }
+            else if (a == 0 && ContadorAparicionTextoDetectar > 0)
+            {
+                ContadorAparicionTextoDetectar = ContadorAparicionTextoDetectar - 20;
+            }
+            if (ContadorAparicionTextoDetectar > 255)
+            {
+                ContadorAparicionTextoDetectar = 255;
+            }
+            else if (ContadorAparicionTextoDetectar < 0)
+            {
+                ContadorAparicionTextoDetectar = 0;
+            }
+            this.LabelDectectar2.ForeColor = Color.FromArgb(ContadorAparicionTextoDetectar, 255, 255, 255);
+        }
+
+        public void AnimacionCambioDimesionRecuadro(int a)
+        {
+            int dat = 0;
+            dat = (int)((11*this.Height/100)*(1-Math.Exp(-ContadorCambioTamañoDetectar * 0.1 / 2)));
+            if (ContadorSalida % 100 == 0)
+            {
+                Console.WriteLine("Contador: " + dat.ToString());
+            }
+            if (a == 1 && dat < 11 * this.Height / 100 && ContadorCambioTamañoDetectar < 50)
+            {
+                ContadorCambioTamañoDetectar++;
+            }
+            else if (a == 0 && dat > 0)
+            {
+                ContadorCambioTamañoDetectar--;
+            }
+            if (ContadorCambioTamañoDetectar < 0)
+            {
+                ContadorCambioTamañoDetectar = 0;
+            }
+            //LARGOPANELDETECTAR = LARGOPANELDETECTAR + dat;
+            this.PanelDetectar.Height = LARGOPANELDETECTAR + dat;
+        }
+
+        public void AnimacionCambioColor(int a)
+        {
+            if (a == 1 && ContadorCambioColorDetectar<120)
+            {
+                ContadorCambioColorDetectar = ContadorCambioColorDetectar + 10;
+            }
+            else if (a == 0 && ContadorCambioColorDetectar > 0)
+            {
+                ContadorCambioColorDetectar = ContadorCambioColorDetectar - 10;  
+            }
+            this.PanelDetectar.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
+            this.LabelDetectar.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
+            this.LabelDectectar2.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColorDetectar);
         }
 
         public void TraslacionRegresarPantalla1()
@@ -812,12 +934,12 @@ namespace Diseño_Programador
 
         private void PanelDetectar_MouseClick(object sender, MouseEventArgs e)
         {
-            AutorizarTraslacionDetectar = true;
+            //AutorizarTraslacionDetectar = true;
         }
 
         private void Lbl_MouseClick(object sender, MouseEventArgs e)
         {
-            AutorizarTraslacionDetectar = true;
+            //AutorizarTraslacionDetectar = true;
         }
 
         private void SelPuerto_Click(object sender, EventArgs e)

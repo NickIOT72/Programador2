@@ -49,6 +49,7 @@
             this.LabelSalirSis = new System.Windows.Forms.Label();
             this.PanelSalirSis = new System.Windows.Forms.Panel();
             this.FPanelGuia2 = new System.Windows.Forms.FlowLayoutPanel();
+            this.LabelDectectar2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PanelBarra
@@ -237,11 +238,21 @@
             this.FPanelGuia2.Size = new System.Drawing.Size(49, 28);
             this.FPanelGuia2.TabIndex = 18;
             // 
+            // LabelDectectar2
+            // 
+            this.LabelDectectar2.AutoSize = true;
+            this.LabelDectectar2.Location = new System.Drawing.Point(367, 61);
+            this.LabelDectectar2.Name = "LabelDectectar2";
+            this.LabelDectectar2.Size = new System.Drawing.Size(35, 13);
+            this.LabelDectectar2.TabIndex = 19;
+            this.LabelDectectar2.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 261);
+            this.Controls.Add(this.LabelDectectar2);
             this.Controls.Add(this.FPanelGuia2);
             this.Controls.Add(this.LabelSalirSis);
             this.Controls.Add(this.PanelSalirSis);
@@ -292,6 +303,6 @@
         private System.Windows.Forms.Label LabelSalirSis;
         private System.Windows.Forms.Panel PanelSalirSis;
         private System.Windows.Forms.FlowLayoutPanel FPanelGuia2;
+        private System.Windows.Forms.Label LabelDectectar2;
     }
 }
-

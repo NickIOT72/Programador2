@@ -51,6 +51,8 @@
             this.FPanelGuia2 = new System.Windows.Forms.FlowLayoutPanel();
             this.LabelDectectar2 = new System.Windows.Forms.Label();
             this.LabelConf2 = new System.Windows.Forms.Label();
+            this.LabelLect2 = new System.Windows.Forms.Label();
+            this.LabelSalirSis2 = new System.Windows.Forms.Label();
             this.SuspendLayout();
             // 
             // PanelBarra
@@ -201,7 +203,7 @@
             // LabelLect
             // 
             this.LabelLect.AutoSize = true;
-            this.LabelLect.Location = new System.Drawing.Point(527, 47);
+            this.LabelLect.Location = new System.Drawing.Point(527, 38);
             this.LabelLect.Name = "LabelLect";
             this.LabelLect.Size = new System.Drawing.Size(35, 13);
             this.LabelLect.TabIndex = 15;
@@ -218,7 +220,7 @@
             // LabelSalirSis
             // 
             this.LabelSalirSis.AutoSize = true;
-            this.LabelSalirSis.Location = new System.Drawing.Point(601, 47);
+            this.LabelSalirSis.Location = new System.Drawing.Point(603, 38);
             this.LabelSalirSis.Name = "LabelSalirSis";
             this.LabelSalirSis.Size = new System.Drawing.Size(35, 13);
             this.LabelSalirSis.TabIndex = 17;
@@ -257,11 +259,31 @@
             this.LabelConf2.TabIndex = 20;
             this.LabelConf2.Text = "label1";
             // 
+            // LabelLect2
+            // 
+            this.LabelLect2.AutoSize = true;
+            this.LabelLect2.Location = new System.Drawing.Point(527, 51);
+            this.LabelLect2.Name = "LabelLect2";
+            this.LabelLect2.Size = new System.Drawing.Size(35, 13);
+            this.LabelLect2.TabIndex = 21;
+            this.LabelLect2.Text = "label1";
+            // 
+            // LabelSalirSis2
+            // 
+            this.LabelSalirSis2.AutoSize = true;
+            this.LabelSalirSis2.Location = new System.Drawing.Point(603, 51);
+            this.LabelSalirSis2.Name = "LabelSalirSis2";
+            this.LabelSalirSis2.Size = new System.Drawing.Size(35, 13);
+            this.LabelSalirSis2.TabIndex = 22;
+            this.LabelSalirSis2.Text = "label1";
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
             this.ClientSize = new System.Drawing.Size(1058, 261);
+            this.Controls.Add(this.LabelSalirSis2);
+            this.Controls.Add(this.LabelLect2);
             this.Controls.Add(this.LabelConf2);
             this.Controls.Add(this.LabelDectectar2);
             this.Controls.Add(this.FPanelGuia2);
@@ -316,5 +338,7 @@
         private System.Windows.Forms.FlowLayoutPanel FPanelGuia2;
         private System.Windows.Forms.Label LabelDectectar2;
         private System.Windows.Forms.Label LabelConf2;
+        private System.Windows.Forms.Label LabelLect2;
+        private System.Windows.Forms.Label LabelSalirSis2;
     }
 }

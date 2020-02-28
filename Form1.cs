@@ -20,21 +20,8 @@ namespace Diseño_Programador
         string LocationOfIntroImage = "H";
 
         //Vraibles para el timer
-        bool AutorizarAnimacionDetectar = false;
-        bool AutorizarAnimacionLbl = false;
-        bool AutorizarContadorCambioDetLbl = false;
         int ContadorAnimacionDetectar = 0;
-        int ValorMinAnimacionDetectar = 0;
-        int ValorMaxAnimacionDetectar = 100;
-        int ContadorCambioPanelDetectarLbl = 0;
-        int ValorMxContadorCambio = 5;
-        int StepAnimacion = 20;
-        bool AutorizarTraslacionDetectar = false;
-        int ContadorTraslacionDetectar = 0;
         double ExponenecialContador = 0;
-        bool AutorizarTraslacionInversaDetectar = false;
-        bool AutorizarRegresarPantalla1 = false;
-        bool AutorizarTranslacionInvertidaPantalla1 = false;
         int LastValue = 0;
         int CantidaPDFGuia = 16;
 
@@ -57,6 +44,8 @@ namespace Diseño_Programador
         const int FPANELGUIA = 15;
         const int LABELDETECTAR2 = 16;
         const int LABELCONF2 = 17;
+        const int LABELLECT2 = 18;
+        const int LABELSALIRSIS2 = 19;
 
         //Dimesiones de PANTALLA PRINCIPA
         int ANCHOPANELBARRA = 0;
@@ -112,6 +101,8 @@ namespace Diseño_Programador
         int POSXFPANELGUIA = 15;
         int POSXLABELDETECTAR2 = 8;
         int POSXLABELCONF2 = 10;
+        int POSXLABELLECT2 = 12;
+        int POSXLABELSALIRSIS2 = 14;
 
         int POSYPANELBARRA = 0;
         int POSYPANELMIN = 1;
@@ -131,13 +122,13 @@ namespace Diseño_Programador
         int POSYFPANELGUIA = 15;
         int POSYLABELDETECTAR2 = 16;
         int POSYLABELCONF2 = 10;
+        int POSYLABELLECT2 = 12;
+        int POSYLABELSALIRSIS2 = 14;
+
+        //Variables para coloress
+
 
         //Varibles para la animacion
-        bool AnimPanelDetectar1 = false;
-        bool AnimPanelDetectar2 = false;
-        bool AnimPanelDetectar3 = false;
-        bool AnimPanelDetectar4 = false;
-        bool IniciarAnimDetectar = false;
         int[] ContadorCambioColor = new int[13];
         int[] ContadorCambioTamaño = new int[13];
         int[] ContadorAparicionTexto = new int[13];
@@ -145,16 +136,8 @@ namespace Diseño_Programador
 
         int ContadorSalida = 0;
 
-        //Creacion de Paneles
-        //private System.Windows.Forms.Panel PanelTitulo;
-        //private System.Windows.Forms.Label LabelTitulo1;
-
         public Form1()
         {
-            // Funcion de paneles
-            /*this.PanelTitulo = new System.Windows.Forms.Panel();
-            this.LabelTitulo1 = new System.Windows.Forms.Label();*/
-
             InitializeComponent();
         }
 
@@ -166,6 +149,7 @@ namespace Diseño_Programador
 
             ActualizarDimesiones();
             ActualizarPosiciones();
+            //ActualizarColores();
             OcultarElementos();
             ActualizarPantalla();// Se actualizan cada componente del sistema
             
@@ -173,6 +157,12 @@ namespace Diseño_Programador
 
         private void panel1_Paint(object sender, PaintEventArgs e)
         {
+
+        }
+
+        public void ActualizarColores()
+        {
+        
 
         }
 
@@ -196,6 +186,9 @@ namespace Diseño_Programador
             this.FPanelGuia2.Visible = false;
             this.LabelDectectar2.Visible = false;
             this.LabelConf2.Visible = false;
+            this.LabelLect2.Visible = false;
+            this.LabelSalirSis2.Visible = false;
+
         }
 
         public void ActualizarDimesiones()
@@ -225,13 +218,13 @@ namespace Diseño_Programador
             LARGOPANELTITULO = 10*this.Height/100;
             //LARGOLABELTITULO1 = 5;
             //LARGOLABELTITULO2 = 6;
-            LARGOPANELDETECTAR = 15*this.Height/100;//29
+            LARGOPANELDETECTAR = 14*this.Height/100;//29
             //LARGOLABELDETECTAR = 8;
-            LARGOPANELCONF = 15*this.Height/100;
+            LARGOPANELCONF = 14*this.Height/100;
             //LARGOLABELCONF = 10;
-            LARGOPANELLECT = 18*this.Height/100;
+            LARGOPANELLECT = 9*this.Height/100;
             //LARGOLABELLECT = 12;
-            LARGOPANELSALIRSIS = 18*this.Height/100;
+            LARGOPANELSALIRSIS = 9*this.Height/100;
             //LARGOLABELSALIRSIS = 14;
             LARGOFPANELGUIA = 65*this.Height/100;
         }
@@ -251,12 +244,15 @@ namespace Diseño_Programador
             POSXPANELCONF = 10*this.Width/100 + ANCHOPANELDETECTAR;
             POSXLABELCONF = 5*ANCHOPANELCONF/100;
             POSXPANELLECT = 5*this.Width/100;
-            POSXLABELLECT = 15*ANCHOPANELLECT/100;
+            POSXLABELLECT = 10*ANCHOPANELLECT/100;
+            POSXLABELLECT2 = 10 * ANCHOPANELLECT / 100;
             POSXPANELSALIRSIS = 5*this.Width/100;
             POSXLABELSALIRSIS = 35*ANCHOPANELSALIRSIS/100;
+            POSXLABELSALIRSIS = 5 * ANCHOPANELSALIRSIS / 100;
             POSXFPANELGUIA = 55*this.Width/100;
             POSXLABELDETECTAR2 = 5 * ANCHOPANELDETECTAR / 100;
             POSXLABELCONF2 = 5 * ANCHOPANELCONF / 100;
+
 
             POSYPANELBARRA = 0;
             POSYPANELMIN = 0;
@@ -267,15 +263,17 @@ namespace Diseño_Programador
             POSYLABELTITULO2 = 5*LARGOPANELBARRA/100;
             POSYPANELDETECTAR = 20*this.Height/100;
             POSYLABELDETECTAR = 5*LARGOPANELDETECTAR/100;
+            POSYLABELDETECTAR2 = 100 * LARGOPANELDETECTAR / 100;
             POSYPANELCONF = POSYPANELDETECTAR;
             POSYLABELCONF = 5*LARGOPANELDETECTAR/100;
-            POSYPANELLECT = 51*this.Height/100;
-            POSYLABELLECT = 30*LARGOPANELLECT/100;
-            POSYPANELSALIRSIS = 71*this.Height/100;
-            POSYLABELSALIRSIS = 30*LARGOPANELSALIRSIS/100;
-            POSYFPANELGUIA = POSYPANELDETECTAR;
-            POSYLABELDETECTAR2 = 100 * LARGOPANELDETECTAR / 100;
             POSYLABELCONF2 = 100 * LARGOPANELDETECTAR / 100;
+            POSYPANELLECT = 51*this.Height/100;
+            POSYLABELLECT = 10*LARGOPANELLECT/100;
+            POSYLABELLECT2 = 100 * LARGOPANELLECT / 100;
+            POSYPANELSALIRSIS = 71*this.Height/100;
+            POSYLABELSALIRSIS = 10*LARGOPANELSALIRSIS/100;
+            POSYLABELSALIRSIS2 = 100 * LARGOPANELSALIRSIS / 100;
+            POSYFPANELGUIA = POSYPANELDETECTAR;
         }
 
         public void ActualizarPantalla()
@@ -305,35 +303,34 @@ namespace Diseño_Programador
             CrearLabel(PANELTITULO, LABELTITULO1 ,"Programador",255,0,200,55, POSXLABELTITULO1, POSYLABELTITULO1,24);
             CrearLabel(PANELTITULO,LABELTITULO2,"TECNAS C.A",255,0,200,55,POSXLABELTITULO2, POSYLABELTITULO2,24);
 
+            MostrarPantalla1();
+        }
+
+        public void MostrarPantalla1()
+        {
+
             //Diseño de Detectar Placa
-            CrearPanel(PANELDETECTAR,255, 0, 96, 110,ANCHOPANELDETECTAR,LARGOPANELDETECTAR,POSXPANELDETECTAR,POSYPANELDETECTAR);
-            CrearLabel(PANELDETECTAR,LABELDETECTAR,"Detectar\nPlaca",255,255,255,255,POSXLABELDETECTAR,POSYLABELDETECTAR,24);
+            CrearPanel(PANELDETECTAR, 255, 0, 96, 110, ANCHOPANELDETECTAR, LARGOPANELDETECTAR, POSXPANELDETECTAR, POSYPANELDETECTAR);
+            CrearLabel(PANELDETECTAR, LABELDETECTAR, "Detectar\nPlaca", 255, 255, 255, 255, POSXLABELDETECTAR, POSYLABELDETECTAR, 24);
             CrearLabel(PANELDETECTAR, LABELDETECTAR2, "Conecte La placa\nAl sistema", 0, 255, 255, 255, POSXLABELDETECTAR2, POSYLABELDETECTAR2, 12);
 
             //Diseño de Configuracion
-            CrearPanel(PANELCONF,255, 80, 80, 80,ANCHOPANELCONF,LARGOPANELCONF,POSXPANELCONF,POSYPANELCONF);
-            CrearLabel(PANELCONF,LABELCONF,"Configu-\nracion",255,255,255,255,POSXLABELCONF,POSYLABELCONF,24);
-            CrearLabel(PANELCONF, LABELCONF2, "Configu-\nracion", 0, 255, 255, 255, POSXLABELCONF2, POSYLABELCONF2, 12);
+            CrearPanel(PANELCONF, 255, 80, 80, 80, ANCHOPANELCONF, LARGOPANELCONF, POSXPANELCONF, POSYPANELCONF);
+            CrearLabel(PANELCONF, LABELCONF, "Configu-\nracion", 255, 255, 255, 255, POSXLABELCONF, POSYLABELCONF, 24);
+            CrearLabel(PANELCONF, LABELCONF2, "Establezca conexion con la\nplaca para habilitar esta \nopcion", 0, 255, 255, 255, POSXLABELCONF2, POSYLABELCONF2, 8);
 
             //Diseño de Lectura de datos
             CrearPanel(PANELLECT, 255, 80, 80, 80, ANCHOPANELLECT, LARGOPANELLECT, POSXPANELLECT, POSYPANELLECT);
             CrearLabel(PANELLECT, LABELLECT, "Lectura de Datos", 255, 255, 255, 255, POSXLABELLECT, POSYLABELLECT, 24);
+            CrearLabel(PANELLECT, LABELLECT2, "Establezca conexion con la placa para habilitar esta opcion", 255, 255, 255, 255, POSXLABELLECT2, POSYLABELLECT2, 8);
 
             //Diseño De Opcion Salir
-            CrearPanel(PANELSALIRSIS, 255, 225, 15, 15, ANCHOPANELSALIRSIS, LARGOPANELSALIRSIS, POSXPANELSALIRSIS, POSYPANELSALIRSIS);
+            CrearPanel(PANELSALIRSIS, 255, 100, 15, 15, ANCHOPANELSALIRSIS, LARGOPANELSALIRSIS, POSXPANELSALIRSIS, POSYPANELSALIRSIS);
             CrearLabel(PANELSALIRSIS, LABELSALIRSIS, "SALIR", 255, 255, 255, 255, POSXLABELSALIRSIS, POSYLABELSALIRSIS, 24);
+            CrearLabel(PANELSALIRSIS, LABELSALIRSIS2, "Gracias por usar nuestro Sitema", 255, 255, 255, 255, POSXLABELSALIRSIS2, POSYLABELSALIRSIS2, 8);
 
+            //Diseño de PanelFGuia
             CrearFPanel(FPANELGUIA, 255, 0, 255, 0, ANCHOFPANELGUIA, LARGOFPANELGUIA, POSXFPANELGUIA, POSYFPANELGUIA);
-
-            /*//();
-            this.PanelDetectar.Visible = false;
-
-            //MostrarSeleccionOpciones();
-            this.SelPuerto.Visible = false;
-
-            //MostrarPanelRegPantalla1();
-            this.RegresarDet.Visible = false;
-            this.RegPantalla2.Visible = false;*/
         }
 
         public void CrearFPanel(int P1, int L, int R, int G, int B, int W, int H, int X, int Y)
@@ -485,8 +482,14 @@ namespace Diseño_Programador
                 case LABELLECT:
                     l = this.LabelLect;
                     break;
+                case LABELLECT2:
+                    l = this.LabelLect2;
+                    break;
                 case LABELSALIRSIS:
                     l = this.LabelSalirSis;
+                    break;
+                case LABELSALIRSIS2:
+                    l = this.LabelSalirSis2;
                     break;
                 case LABELTITULO1:
                     l = this.LabelTitulo1;
@@ -756,16 +759,25 @@ namespace Diseño_Programador
             int[] P1 = new int[13];
             P1[0] = PANELDETECTAR;
             P1[1] = PANELCONF;
+            P1[2] = PANELLECT;
+            P1[3] = PANELSALIRSIS;
             //*********************
             PosXVAL[0] = POSXPANELDETECTAR;
             PosXVAL[1] = POSXPANELCONF;
+            PosXVAL[2] = POSXPANELLECT;
+            PosXVAL[3] = POSXPANELSALIRSIS;
             //***********************
             PosYVAL[0] = POSYPANELDETECTAR;
             PosYVAL[1] = POSYPANELCONF;
+            PosYVAL[2] = POSYPANELLECT;
+            PosYVAL[3] = POSYPANELSALIRSIS;
             //**********************
 
 
-            for (int i = 0; i <= 1;i++)
+            //***********************
+
+
+            for (int i = 0; i <= 3;i++)
             {
 
                 var P = this.PanelBarra;
@@ -809,12 +821,12 @@ namespace Diseño_Programador
             }
 
             ContadorSalida++;
-            if (ContadorSalida % 100 == 0)
+            if (ContadorSalida % 300 == 0)
             {
-                Console.WriteLine("X: " + MouseXPos + " Y: " + MouseYPos + " X1: " + DectX1 + " X2: " + DectX2 + " Y1: " + DectY1 + " Y2: " + DectY2);
+                Console.WriteLine("X: " + MouseXPos + " Y: " + MouseYPos );
             }
 
-            for (int i = 0; i <= 1; i++)
+            for (int i = 0; i <=3; i++)
             {
                 if (MouseXPos >= DectX1[i] && MouseXPos <= DectX2[i] && MouseYPos >= DectY1[i] && MouseYPos <= DectY2[i])
                 {
@@ -912,13 +924,16 @@ namespace Diseño_Programador
 
         public void AnimacionCambioDimesionRecuadro(int a, int i)
         {
+            
             int dat = 0;
-            dat = (int)((11*this.Height/100)*(1-Math.Exp(-ContadorCambioTamaño[i] * 0.1 / 2)));
-            if (ContadorSalida % 100 == 0)
-            {
-                Console.WriteLine("Contador: " + dat.ToString());
-            }
-            if (a == 1 && dat < 11 * this.Height / 100 && ContadorCambioTamaño[i] < 50)
+            int[] A = new int[13];
+            A[0] = 11;
+            A[1] = 11;
+            A[2] = 9;
+            A[3] = 9;
+            dat = (int)((A[i] * this.Height/100)*(1-Math.Exp(-ContadorCambioTamaño[i] * 0.1 / 2)));
+
+            if (a == 1 && dat < A[i] * this.Height / 100 && ContadorCambioTamaño[i] < 50)
             {
                 ContadorCambioTamaño[i]++;
             }
@@ -935,9 +950,13 @@ namespace Diseño_Programador
             int[] P1 = new int[13];
             P1[0] = PANELDETECTAR;
             P1[1] = PANELCONF;
+            P1[2] = PANELLECT;
+            P1[3] = PANELSALIRSIS;
             int[] P2 = new int[13];
             P2[0] = LARGOPANELDETECTAR;
             P2[1] = LARGOPANELCONF;
+            P2[2] = LARGOPANELLECT;
+            P2[3] = LARGOPANELSALIRSIS;
             var P = this.PanelBarra;
             switch (P1[i])
             {
@@ -989,12 +1008,23 @@ namespace Diseño_Programador
             int[] P1 = new int[13];
             P1[0] = PANELDETECTAR;
             P1[1] = PANELCONF;
+            P1[2] = PANELLECT;
+            P1[3] = PANELSALIRSIS;
             int[] L1 = new int[13];
             L1[0] = LABELDETECTAR;
             L1[1] = LABELCONF;
+            L1[2] = LABELLECT;
+            L1[3] = LABELSALIRSIS;
             int[] L2 = new int[13];
             L2[0] = LABELDETECTAR2;
             L2[1] = LABELCONF2;
+            L2[2] = LABELLECT2;
+            L2[3] = LABELSALIRSIS2;
+
+            int[] ColorSelAlpha = new int[3];
+            int[] ColorSelRed = new int[3];
+            int[] ColorSelGreen = new int[3];
+            int[] ColorSelBlue = new int[3];
 
             var P = this.PanelBarra;
             switch (P1[i])
@@ -1004,12 +1034,24 @@ namespace Diseño_Programador
                     break;
                 case PANELCONF:
                     P = this.PanelConf;
+                    ColorSelAlpha[0] = 255;
+                    ColorSelRed[0] = 80 + ContadorCambioColor[i];
+                    ColorSelGreen[0] = 80 + ContadorCambioColor[i];
+                    ColorSelBlue[0] = 80 + ContadorCambioColor[i];
                     break;
                 case PANELDETECTAR:
                     P = this.PanelDetectar;
+                    ColorSelAlpha[0] = 255;
+                    ColorSelRed[0] = 0;
+                    ColorSelGreen[0] = 96;
+                    ColorSelBlue[0] = 110 + ContadorCambioColor[i];
                     break;
                 case PANELLECT:
                     P = this.PanelLect;
+                    ColorSelAlpha[0] = 255;
+                    ColorSelRed[0] = 80 + ContadorCambioColor[i];
+                    ColorSelGreen[0] = 80 + ContadorCambioColor[i];
+                    ColorSelBlue[0] = 80 + ContadorCambioColor[i];
                     break;
                 case PANELMAX:
                     P = this.PanelMax;
@@ -1022,6 +1064,10 @@ namespace Diseño_Programador
                     break;
                 case PANELSALIRSIS:
                     P = this.PanelSalirSis;
+                    ColorSelAlpha[0] = 255;
+                    ColorSelRed[0] = 100 + ContadorCambioColor[i];
+                    ColorSelGreen[0] = 15;
+                    ColorSelBlue[0] = 15;
                     break;
                 case PANELTITULO:
                     P = this.PanelTitulo;
@@ -1062,37 +1108,26 @@ namespace Diseño_Programador
             var l2 = this.LabelTitulo1;
             switch (L2[i])
             {
-                case LABELCONF:
-                    l2 = this.LabelConf;
-                    break;
                 case LABELCONF2:
                     l2 = this.LabelConf2;
-                    break;
-                case LABELDETECTAR:
-                    l2 = this.LabelDetectar;
                     break;
                 case LABELDETECTAR2:
                     l2 = this.LabelDectectar2;
                     break;
-                case LABELLECT:
-                    l2 = this.LabelLect;
+                case LABELLECT2:
+                    l2 = this.LabelLect2;
                     break;
-                case LABELSALIRSIS:
-                    l2 = this.LabelSalirSis;
+                case LABELSALIRSIS2:
+                    l2 = this.LabelSalirSis2;
                     break;
-                case LABELTITULO1:
-                    l2 = this.LabelTitulo1;
-                    break;
-                case LABELTITULO2:
-                    l2 = this.LabelTitulo2;
-                    break;
+
                 default:
                     return;
             }
 
-            P.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
-            l.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
-            l2.BackColor = Color.FromArgb(255, 0, 96, 110 + ContadorCambioColor[i]);
+            P.BackColor = Color.FromArgb(ColorSelAlpha[0], ColorSelRed[0], ColorSelGreen[0], ColorSelBlue[0]);
+            l.BackColor = P.BackColor;
+            l2.BackColor = P.BackColor;
         }
 
         public void TraslacionRegresarPantalla1()
@@ -1110,7 +1145,7 @@ namespace Diseño_Programador
                 //LastValue = (int)(Math.Exp(ExponenecialContador / 8));
                 Console.WriteLine(LastValue.ToString());
                 ExponenecialContador = 0;
-                AutorizarRegresarPantalla1 = false;
+                //AutorizarRegresarPantalla1 = false;
                 this.SelPuerto.Visible = true;
                 this.RegresarDet.Visible = true;
                 //MostrarSeleccionOpciones();
@@ -1131,7 +1166,7 @@ namespace Diseño_Programador
                 LastValue = (int)(Math.Exp(ExponenecialContador / 8));
                 Console.WriteLine(LastValue.ToString());
                 ExponenecialContador = 0;
-                AutorizarTraslacionInversaDetectar = true;
+                //AutorizarTraslacionInversaDetectar = true;
                 this.SelPuerto.Visible = true;
                 this.RegresarDet.Visible = true;
                 //MostrarSeleccionOpciones();
@@ -1167,12 +1202,12 @@ namespace Diseño_Programador
 
         private void RegresarDet_MouseClick(object sender, MouseEventArgs e)
         {
-            AutorizarRegresarPantalla1 = true;
+            //AutorizarRegresarPantalla1 = true;
         }
 
         private void RegPantalla2_MouseClick(object sender, MouseEventArgs e)
         {
-            AutorizarRegresarPantalla1 = true;
+            //AutorizarRegresarPantalla1 = true;
         }
     }
 }

@@ -37,8 +37,8 @@
             this.LabelDetectar = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SelPuerto = new System.Windows.Forms.Label();
-            this.RegresarDet = new System.Windows.Forms.Panel();
-            this.RegPantalla2 = new System.Windows.Forms.Label();
+            this.PanelRegresar = new System.Windows.Forms.Panel();
+            this.LabelRegresar = new System.Windows.Forms.Label();
             this.PanelTitulo = new System.Windows.Forms.Panel();
             this.LabelTitulo1 = new System.Windows.Forms.Label();
             this.PanelConf = new System.Windows.Forms.Panel();
@@ -137,25 +137,25 @@
             this.SelPuerto.Visible = false;
             this.SelPuerto.Click += new System.EventHandler(this.SelPuerto_Click);
             // 
-            // RegresarDet
+            // PanelRegresar
             // 
-            this.RegresarDet.BackColor = System.Drawing.SystemColors.GrayText;
-            this.RegresarDet.Location = new System.Drawing.Point(18, 61);
-            this.RegresarDet.Name = "RegresarDet";
-            this.RegresarDet.Size = new System.Drawing.Size(42, 17);
-            this.RegresarDet.TabIndex = 7;
-            this.RegresarDet.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegresarDet_MouseClick);
+            this.PanelRegresar.BackColor = System.Drawing.SystemColors.GrayText;
+            this.PanelRegresar.Location = new System.Drawing.Point(18, 61);
+            this.PanelRegresar.Name = "PanelRegresar";
+            this.PanelRegresar.Size = new System.Drawing.Size(42, 17);
+            this.PanelRegresar.TabIndex = 7;
+            this.PanelRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegresarDet_MouseClick);
             // 
-            // RegPantalla2
+            // LabelRegresar
             // 
-            this.RegPantalla2.AutoSize = true;
-            this.RegPantalla2.Location = new System.Drawing.Point(15, 81);
-            this.RegPantalla2.Name = "RegPantalla2";
-            this.RegPantalla2.Size = new System.Drawing.Size(35, 13);
-            this.RegPantalla2.TabIndex = 8;
-            this.RegPantalla2.Text = "label1";
-            this.RegPantalla2.Visible = false;
-            this.RegPantalla2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegPantalla2_MouseClick);
+            this.LabelRegresar.AutoSize = true;
+            this.LabelRegresar.Location = new System.Drawing.Point(15, 81);
+            this.LabelRegresar.Name = "LabelRegresar";
+            this.LabelRegresar.Size = new System.Drawing.Size(35, 13);
+            this.LabelRegresar.TabIndex = 8;
+            this.LabelRegresar.Text = "label1";
+            this.LabelRegresar.Visible = false;
+            this.LabelRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegPantalla2_MouseClick);
             // 
             // PanelTitulo
             // 
@@ -249,6 +249,8 @@
             this.LabelDectectar2.Size = new System.Drawing.Size(35, 13);
             this.LabelDectectar2.TabIndex = 19;
             this.LabelDectectar2.Text = "label1";
+            this.LabelDectectar2.Click += new System.EventHandler(this.LabelDectectar2_Click);
+            this.LabelDectectar2.MouseClick += new System.Windows.Forms.MouseEventHandler(this.LabelDectectar2_MouseClick);
             // 
             // LabelConf2
             // 
@@ -296,8 +298,8 @@
             this.Controls.Add(this.PanelConf);
             this.Controls.Add(this.LabelTitulo1);
             this.Controls.Add(this.PanelTitulo);
-            this.Controls.Add(this.RegPantalla2);
-            this.Controls.Add(this.RegresarDet);
+            this.Controls.Add(this.LabelRegresar);
+            this.Controls.Add(this.PanelRegresar);
             this.Controls.Add(this.SelPuerto);
             this.Controls.Add(this.LabelDetectar);
             this.Controls.Add(this.PanelDetectar);
@@ -324,8 +326,8 @@
         private System.Windows.Forms.Label LabelDetectar;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label SelPuerto;
-        private System.Windows.Forms.Panel RegresarDet;
-        private System.Windows.Forms.Label RegPantalla2;
+        private System.Windows.Forms.Panel PanelRegresar;
+        private System.Windows.Forms.Label LabelRegresar;
         private System.Windows.Forms.Panel PanelTitulo;
         private System.Windows.Forms.Label LabelTitulo1;
         private System.Windows.Forms.Panel PanelConf;

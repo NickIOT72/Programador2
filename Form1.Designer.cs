@@ -37,8 +37,8 @@
             this.LabelDetectar = new System.Windows.Forms.Label();
             this.timer1 = new System.Windows.Forms.Timer(this.components);
             this.SelPuerto = new System.Windows.Forms.Label();
-            this.PanelRegresar = new System.Windows.Forms.Panel();
-            this.LabelRegresar = new System.Windows.Forms.Label();
+            this.PanelRregresar = new System.Windows.Forms.Panel();
+            this.LabelRRegresar = new System.Windows.Forms.Label();
             this.PanelTitulo = new System.Windows.Forms.Panel();
             this.LabelTitulo1 = new System.Windows.Forms.Label();
             this.PanelConf = new System.Windows.Forms.Panel();
@@ -53,6 +53,32 @@
             this.LabelConf2 = new System.Windows.Forms.Label();
             this.LabelLect2 = new System.Windows.Forms.Label();
             this.LabelSalirSis2 = new System.Windows.Forms.Label();
+            this.PanelSelPuerto = new System.Windows.Forms.Panel();
+            this.LabelSelPuerto = new System.Windows.Forms.Label();
+            this.LabelCOM = new System.Windows.Forms.Label();
+            this.PanelCOM = new System.Windows.Forms.Panel();
+            this.LabelConectar = new System.Windows.Forms.Label();
+            this.PanelConectar = new System.Windows.Forms.Panel();
+            this.LabelEquipo = new System.Windows.Forms.Label();
+            this.PanelEquipo = new System.Windows.Forms.Panel();
+            this.LabelEquipoData = new System.Windows.Forms.Label();
+            this.PanelEquipoData = new System.Windows.Forms.Panel();
+            this.LabelNSerie = new System.Windows.Forms.Label();
+            this.PanelNSerie = new System.Windows.Forms.Panel();
+            this.LabelNSerieData = new System.Windows.Forms.Label();
+            this.PanelNSerieData = new System.Windows.Forms.Panel();
+            this.LabelVersion = new System.Windows.Forms.Label();
+            this.PanelVersion = new System.Windows.Forms.Panel();
+            this.LabelVersionData = new System.Windows.Forms.Label();
+            this.PanelVersionData = new System.Windows.Forms.Panel();
+            this.LabelCabina = new System.Windows.Forms.Label();
+            this.PanelCabina = new System.Windows.Forms.Panel();
+            this.LabelCabinaData = new System.Windows.Forms.Label();
+            this.PanelCabinaData = new System.Windows.Forms.Panel();
+            this.LabelRegresar = new System.Windows.Forms.Label();
+            this.PanelRegresar = new System.Windows.Forms.Panel();
+            this.LabelStatus = new System.Windows.Forms.Label();
+            this.PanelStatus = new System.Windows.Forms.Panel();
             this.SuspendLayout();
             // 
             // PanelBarra
@@ -129,7 +155,7 @@
             // SelPuerto
             // 
             this.SelPuerto.AutoSize = true;
-            this.SelPuerto.Location = new System.Drawing.Point(15, 117);
+            this.SelPuerto.Location = new System.Drawing.Point(794, 170);
             this.SelPuerto.Name = "SelPuerto";
             this.SelPuerto.Size = new System.Drawing.Size(35, 13);
             this.SelPuerto.TabIndex = 6;
@@ -137,25 +163,26 @@
             this.SelPuerto.Visible = false;
             this.SelPuerto.Click += new System.EventHandler(this.SelPuerto_Click);
             // 
-            // PanelRegresar
+            // PanelRregresar
             // 
-            this.PanelRegresar.BackColor = System.Drawing.SystemColors.GrayText;
-            this.PanelRegresar.Location = new System.Drawing.Point(18, 61);
-            this.PanelRegresar.Name = "PanelRegresar";
-            this.PanelRegresar.Size = new System.Drawing.Size(42, 17);
-            this.PanelRegresar.TabIndex = 7;
-            this.PanelRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegresarDet_MouseClick);
+            this.PanelRregresar.BackColor = System.Drawing.SystemColors.GrayText;
+            this.PanelRregresar.Location = new System.Drawing.Point(719, 139);
+            this.PanelRregresar.Name = "PanelRregresar";
+            this.PanelRregresar.Size = new System.Drawing.Size(42, 17);
+            this.PanelRregresar.TabIndex = 7;
+            this.PanelRregresar.Visible = false;
+            this.PanelRregresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegresarDet_MouseClick);
             // 
-            // LabelRegresar
+            // LabelRRegresar
             // 
-            this.LabelRegresar.AutoSize = true;
-            this.LabelRegresar.Location = new System.Drawing.Point(15, 81);
-            this.LabelRegresar.Name = "LabelRegresar";
-            this.LabelRegresar.Size = new System.Drawing.Size(35, 13);
-            this.LabelRegresar.TabIndex = 8;
-            this.LabelRegresar.Text = "label1";
-            this.LabelRegresar.Visible = false;
-            this.LabelRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegPantalla2_MouseClick);
+            this.LabelRRegresar.AutoSize = true;
+            this.LabelRRegresar.Location = new System.Drawing.Point(716, 159);
+            this.LabelRRegresar.Name = "LabelRRegresar";
+            this.LabelRRegresar.Size = new System.Drawing.Size(35, 13);
+            this.LabelRRegresar.TabIndex = 8;
+            this.LabelRRegresar.Text = "label1";
+            this.LabelRRegresar.Visible = false;
+            this.LabelRRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.RegPantalla2_MouseClick);
             // 
             // PanelTitulo
             // 
@@ -236,7 +263,7 @@
             // 
             // FPanelGuia2
             // 
-            this.FPanelGuia2.Location = new System.Drawing.Point(88, 61);
+            this.FPanelGuia2.Location = new System.Drawing.Point(789, 139);
             this.FPanelGuia2.Name = "FPanelGuia2";
             this.FPanelGuia2.Size = new System.Drawing.Size(49, 28);
             this.FPanelGuia2.TabIndex = 18;
@@ -279,11 +306,259 @@
             this.LabelSalirSis2.TabIndex = 22;
             this.LabelSalirSis2.Text = "label1";
             // 
+            // PanelSelPuerto
+            // 
+            this.PanelSelPuerto.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelSelPuerto.Location = new System.Drawing.Point(12, 78);
+            this.PanelSelPuerto.Name = "PanelSelPuerto";
+            this.PanelSelPuerto.Size = new System.Drawing.Size(31, 17);
+            this.PanelSelPuerto.TabIndex = 23;
+            // 
+            // LabelSelPuerto
+            // 
+            this.LabelSelPuerto.AutoSize = true;
+            this.LabelSelPuerto.Location = new System.Drawing.Point(12, 98);
+            this.LabelSelPuerto.Name = "LabelSelPuerto";
+            this.LabelSelPuerto.Size = new System.Drawing.Size(35, 13);
+            this.LabelSelPuerto.TabIndex = 24;
+            this.LabelSelPuerto.Text = "label1";
+            // 
+            // LabelCOM
+            // 
+            this.LabelCOM.AutoSize = true;
+            this.LabelCOM.Location = new System.Drawing.Point(58, 98);
+            this.LabelCOM.Name = "LabelCOM";
+            this.LabelCOM.Size = new System.Drawing.Size(35, 13);
+            this.LabelCOM.TabIndex = 26;
+            this.LabelCOM.Text = "label2";
+            // 
+            // PanelCOM
+            // 
+            this.PanelCOM.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelCOM.Location = new System.Drawing.Point(58, 78);
+            this.PanelCOM.Name = "PanelCOM";
+            this.PanelCOM.Size = new System.Drawing.Size(31, 17);
+            this.PanelCOM.TabIndex = 25;
+            // 
+            // LabelConectar
+            // 
+            this.LabelConectar.AutoSize = true;
+            this.LabelConectar.Location = new System.Drawing.Point(109, 98);
+            this.LabelConectar.Name = "LabelConectar";
+            this.LabelConectar.Size = new System.Drawing.Size(35, 13);
+            this.LabelConectar.TabIndex = 28;
+            this.LabelConectar.Text = "label3";
+            // 
+            // PanelConectar
+            // 
+            this.PanelConectar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelConectar.Location = new System.Drawing.Point(109, 78);
+            this.PanelConectar.Name = "PanelConectar";
+            this.PanelConectar.Size = new System.Drawing.Size(31, 17);
+            this.PanelConectar.TabIndex = 27;
+            // 
+            // LabelEquipo
+            // 
+            this.LabelEquipo.AutoSize = true;
+            this.LabelEquipo.Location = new System.Drawing.Point(157, 98);
+            this.LabelEquipo.Name = "LabelEquipo";
+            this.LabelEquipo.Size = new System.Drawing.Size(35, 13);
+            this.LabelEquipo.TabIndex = 30;
+            this.LabelEquipo.Text = "label4";
+            // 
+            // PanelEquipo
+            // 
+            this.PanelEquipo.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelEquipo.Location = new System.Drawing.Point(157, 78);
+            this.PanelEquipo.Name = "PanelEquipo";
+            this.PanelEquipo.Size = new System.Drawing.Size(31, 17);
+            this.PanelEquipo.TabIndex = 29;
+            // 
+            // LabelEquipoData
+            // 
+            this.LabelEquipoData.AutoSize = true;
+            this.LabelEquipoData.Location = new System.Drawing.Point(198, 98);
+            this.LabelEquipoData.Name = "LabelEquipoData";
+            this.LabelEquipoData.Size = new System.Drawing.Size(35, 13);
+            this.LabelEquipoData.TabIndex = 26;
+            this.LabelEquipoData.Text = "label5";
+            // 
+            // PanelEquipoData
+            // 
+            this.PanelEquipoData.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelEquipoData.Location = new System.Drawing.Point(198, 78);
+            this.PanelEquipoData.Name = "PanelEquipoData";
+            this.PanelEquipoData.Size = new System.Drawing.Size(31, 17);
+            this.PanelEquipoData.TabIndex = 25;
+            // 
+            // LabelNSerie
+            // 
+            this.LabelNSerie.AutoSize = true;
+            this.LabelNSerie.Location = new System.Drawing.Point(249, 98);
+            this.LabelNSerie.Name = "LabelNSerie";
+            this.LabelNSerie.Size = new System.Drawing.Size(35, 13);
+            this.LabelNSerie.TabIndex = 32;
+            this.LabelNSerie.Text = "label6";
+            // 
+            // PanelNSerie
+            // 
+            this.PanelNSerie.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelNSerie.Location = new System.Drawing.Point(249, 78);
+            this.PanelNSerie.Name = "PanelNSerie";
+            this.PanelNSerie.Size = new System.Drawing.Size(31, 17);
+            this.PanelNSerie.TabIndex = 31;
+            // 
+            // LabelNSerieData
+            // 
+            this.LabelNSerieData.AutoSize = true;
+            this.LabelNSerieData.Location = new System.Drawing.Point(306, 98);
+            this.LabelNSerieData.Name = "LabelNSerieData";
+            this.LabelNSerieData.Size = new System.Drawing.Size(35, 13);
+            this.LabelNSerieData.TabIndex = 34;
+            this.LabelNSerieData.Text = "label7";
+            // 
+            // PanelNSerieData
+            // 
+            this.PanelNSerieData.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelNSerieData.Location = new System.Drawing.Point(306, 78);
+            this.PanelNSerieData.Name = "PanelNSerieData";
+            this.PanelNSerieData.Size = new System.Drawing.Size(31, 17);
+            this.PanelNSerieData.TabIndex = 33;
+            // 
+            // LabelVersion
+            // 
+            this.LabelVersion.AutoSize = true;
+            this.LabelVersion.Location = new System.Drawing.Point(347, 98);
+            this.LabelVersion.Name = "LabelVersion";
+            this.LabelVersion.Size = new System.Drawing.Size(35, 13);
+            this.LabelVersion.TabIndex = 36;
+            this.LabelVersion.Text = "label8";
+            // 
+            // PanelVersion
+            // 
+            this.PanelVersion.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelVersion.Location = new System.Drawing.Point(347, 78);
+            this.PanelVersion.Name = "PanelVersion";
+            this.PanelVersion.Size = new System.Drawing.Size(31, 17);
+            this.PanelVersion.TabIndex = 35;
+            // 
+            // LabelVersionData
+            // 
+            this.LabelVersionData.AutoSize = true;
+            this.LabelVersionData.Location = new System.Drawing.Point(398, 98);
+            this.LabelVersionData.Name = "LabelVersionData";
+            this.LabelVersionData.Size = new System.Drawing.Size(35, 13);
+            this.LabelVersionData.TabIndex = 38;
+            this.LabelVersionData.Text = "label9";
+            // 
+            // PanelVersionData
+            // 
+            this.PanelVersionData.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelVersionData.Location = new System.Drawing.Point(398, 78);
+            this.PanelVersionData.Name = "PanelVersionData";
+            this.PanelVersionData.Size = new System.Drawing.Size(31, 17);
+            this.PanelVersionData.TabIndex = 37;
+            // 
+            // LabelCabina
+            // 
+            this.LabelCabina.AutoSize = true;
+            this.LabelCabina.Location = new System.Drawing.Point(446, 98);
+            this.LabelCabina.Name = "LabelCabina";
+            this.LabelCabina.Size = new System.Drawing.Size(41, 13);
+            this.LabelCabina.TabIndex = 26;
+            this.LabelCabina.Text = "label10";
+            // 
+            // PanelCabina
+            // 
+            this.PanelCabina.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelCabina.Location = new System.Drawing.Point(446, 78);
+            this.PanelCabina.Name = "PanelCabina";
+            this.PanelCabina.Size = new System.Drawing.Size(31, 17);
+            this.PanelCabina.TabIndex = 25;
+            // 
+            // LabelCabinaData
+            // 
+            this.LabelCabinaData.AutoSize = true;
+            this.LabelCabinaData.Location = new System.Drawing.Point(495, 98);
+            this.LabelCabinaData.Name = "LabelCabinaData";
+            this.LabelCabinaData.Size = new System.Drawing.Size(41, 13);
+            this.LabelCabinaData.TabIndex = 40;
+            this.LabelCabinaData.Text = "label11";
+            // 
+            // PanelCabinaData
+            // 
+            this.PanelCabinaData.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelCabinaData.Location = new System.Drawing.Point(495, 78);
+            this.PanelCabinaData.Name = "PanelCabinaData";
+            this.PanelCabinaData.Size = new System.Drawing.Size(31, 17);
+            this.PanelCabinaData.TabIndex = 39;
+            // 
+            // LabelRegresar
+            // 
+            this.LabelRegresar.AutoSize = true;
+            this.LabelRegresar.Location = new System.Drawing.Point(546, 98);
+            this.LabelRegresar.Name = "LabelRegresar";
+            this.LabelRegresar.Size = new System.Drawing.Size(41, 13);
+            this.LabelRegresar.TabIndex = 42;
+            this.LabelRegresar.Text = "label12";
+            // 
+            // PanelRegresar
+            // 
+            this.PanelRegresar.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelRegresar.Location = new System.Drawing.Point(546, 78);
+            this.PanelRegresar.Name = "PanelRegresar";
+            this.PanelRegresar.Size = new System.Drawing.Size(31, 17);
+            this.PanelRegresar.TabIndex = 41;
+            this.PanelRegresar.MouseClick += new System.Windows.Forms.MouseEventHandler(this.PanelRegresar_MouseClick);
+            // 
+            // LabelStatus
+            // 
+            this.LabelStatus.AutoSize = true;
+            this.LabelStatus.Location = new System.Drawing.Point(595, 98);
+            this.LabelStatus.Name = "LabelStatus";
+            this.LabelStatus.Size = new System.Drawing.Size(41, 13);
+            this.LabelStatus.TabIndex = 44;
+            this.LabelStatus.Text = "label13";
+            // 
+            // PanelStatus
+            // 
+            this.PanelStatus.BackColor = System.Drawing.SystemColors.ControlDark;
+            this.PanelStatus.Location = new System.Drawing.Point(595, 78);
+            this.PanelStatus.Name = "PanelStatus";
+            this.PanelStatus.Size = new System.Drawing.Size(31, 17);
+            this.PanelStatus.TabIndex = 43;
+            // 
             // Form1
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(6F, 13F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(1058, 261);
+            this.ClientSize = new System.Drawing.Size(841, 225);
+            this.Controls.Add(this.LabelStatus);
+            this.Controls.Add(this.PanelStatus);
+            this.Controls.Add(this.LabelRegresar);
+            this.Controls.Add(this.PanelRegresar);
+            this.Controls.Add(this.LabelCabinaData);
+            this.Controls.Add(this.PanelCabinaData);
+            this.Controls.Add(this.LabelCabina);
+            this.Controls.Add(this.LabelVersionData);
+            this.Controls.Add(this.PanelCabina);
+            this.Controls.Add(this.PanelVersionData);
+            this.Controls.Add(this.LabelVersion);
+            this.Controls.Add(this.PanelVersion);
+            this.Controls.Add(this.LabelNSerieData);
+            this.Controls.Add(this.PanelNSerieData);
+            this.Controls.Add(this.LabelNSerie);
+            this.Controls.Add(this.PanelNSerie);
+            this.Controls.Add(this.LabelEquipoData);
+            this.Controls.Add(this.LabelEquipo);
+            this.Controls.Add(this.PanelEquipoData);
+            this.Controls.Add(this.PanelEquipo);
+            this.Controls.Add(this.LabelConectar);
+            this.Controls.Add(this.PanelConectar);
+            this.Controls.Add(this.LabelCOM);
+            this.Controls.Add(this.PanelCOM);
+            this.Controls.Add(this.LabelSelPuerto);
+            this.Controls.Add(this.PanelSelPuerto);
             this.Controls.Add(this.LabelSalirSis2);
             this.Controls.Add(this.LabelLect2);
             this.Controls.Add(this.LabelConf2);
@@ -298,8 +573,8 @@
             this.Controls.Add(this.PanelConf);
             this.Controls.Add(this.LabelTitulo1);
             this.Controls.Add(this.PanelTitulo);
-            this.Controls.Add(this.LabelRegresar);
-            this.Controls.Add(this.PanelRegresar);
+            this.Controls.Add(this.LabelRRegresar);
+            this.Controls.Add(this.PanelRregresar);
             this.Controls.Add(this.SelPuerto);
             this.Controls.Add(this.LabelDetectar);
             this.Controls.Add(this.PanelDetectar);
@@ -326,8 +601,8 @@
         private System.Windows.Forms.Label LabelDetectar;
         private System.Windows.Forms.Timer timer1;
         private System.Windows.Forms.Label SelPuerto;
-        private System.Windows.Forms.Panel PanelRegresar;
-        private System.Windows.Forms.Label LabelRegresar;
+        private System.Windows.Forms.Panel PanelRregresar;
+        private System.Windows.Forms.Label LabelRRegresar;
         private System.Windows.Forms.Panel PanelTitulo;
         private System.Windows.Forms.Label LabelTitulo1;
         private System.Windows.Forms.Panel PanelConf;
@@ -342,5 +617,31 @@
         private System.Windows.Forms.Label LabelConf2;
         private System.Windows.Forms.Label LabelLect2;
         private System.Windows.Forms.Label LabelSalirSis2;
+        private System.Windows.Forms.Panel PanelSelPuerto;
+        private System.Windows.Forms.Label LabelSelPuerto;
+        private System.Windows.Forms.Label LabelCOM;
+        private System.Windows.Forms.Panel PanelCOM;
+        private System.Windows.Forms.Label LabelConectar;
+        private System.Windows.Forms.Panel PanelConectar;
+        private System.Windows.Forms.Label LabelEquipo;
+        private System.Windows.Forms.Panel PanelEquipo;
+        private System.Windows.Forms.Label LabelEquipoData;
+        private System.Windows.Forms.Panel PanelEquipoData;
+        private System.Windows.Forms.Label LabelNSerie;
+        private System.Windows.Forms.Panel PanelNSerie;
+        private System.Windows.Forms.Label LabelNSerieData;
+        private System.Windows.Forms.Panel PanelNSerieData;
+        private System.Windows.Forms.Label LabelVersion;
+        private System.Windows.Forms.Panel PanelVersion;
+        private System.Windows.Forms.Label LabelVersionData;
+        private System.Windows.Forms.Panel PanelVersionData;
+        private System.Windows.Forms.Label LabelCabina;
+        private System.Windows.Forms.Panel PanelCabina;
+        private System.Windows.Forms.Label LabelCabinaData;
+        private System.Windows.Forms.Panel PanelCabinaData;
+        private System.Windows.Forms.Label LabelRegresar;
+        private System.Windows.Forms.Panel PanelRegresar;
+        private System.Windows.Forms.Label LabelStatus;
+        private System.Windows.Forms.Panel PanelStatus;
     }
 }
